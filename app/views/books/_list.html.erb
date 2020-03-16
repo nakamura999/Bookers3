@@ -1,0 +1,42 @@
+<!-- 共通部分　プロフィールから投稿まで -->
+          <div class="col-xs-3">
+            <!-- プロフィール -->
+             <h2>User info</h2>
+             <%= attachment_image_tag user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg" %>
+             <table class="table">
+              <tbody><tr></<tr></tr>
+                <tr>
+    	            <th>name</th>
+    	            <th><%= user.name %></th>
+                </tr>
+                <tr>
+    	            <th>introduction</th>
+    	            <th><%= user.introduction %></th>
+                </tr>
+              </tbody>
+             </table>
+             <div class="row">
+               <%= link_to  edit_user_path(@user.id) do %>
+                <span class= "col-xs-12 btn btn-default glyphicon glyphicon-wrench"></span>
+               <%end%>
+             </div>
+
+
+             <!-- 投票欄↓ -->
+             <h2>New book</h2>
+               <%= form_for(book) do |book| %>
+                 <div class="field row">
+                   <label for="book_title">Title</label>
+                   <%= book.text_field :title, class: "col-xs-12" %>
+                 </div>
+
+                 <div class="field row">
+                   <label for="book_opinion">Opinion</label>
+                   <%= book.text_area :body, class: "col-xs-12" %>
+                 </div>
+
+                 <div class="actions row">
+                   <%= book.submit "Create Book", class: "btn btn-primary col-xs-12" %>
+                 </div>
+               <% end %>
+          </div>
