@@ -16,6 +16,9 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
 
+@import 'font-awesome-sprockets';
+@import 'font-awesome';
+
 
  .navbar {
     margin-bottom: 0px;
@@ -65,4 +68,28 @@ label {
 }
 .successfully {
 	font-size: 20px;
+}
+
+
+#container-1 {
+	height: 300px;
+}
+.image1 {
+background-image: url(11b06a7d.jpg);
+}
+.image2 {
+background-image: url(597eeeff.jpg);
+}
+.image3 {
+background-image: url(1024x768x3f93da36e4dcc70910e18ac.jpg);
+}
+.image4 {
+background-image: url(1024x768x853b031a43495200d111d6f.jpg);
+}
+.image5 {
+background-image: url(1920x1200x09076665005810ddd8db00.jpg);
+}
+
+.sm-s {
+	float: right;
 }

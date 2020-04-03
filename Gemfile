@@ -72,3 +72,14 @@ gem 'jquery-rails'
 
 gem "refile", require: "refile/rails", github: 'manfe/refile'
 gem "refile-mini_magick"
+
+gem "jquery-rails"
+
+# MySQLを利用するためのgem
+gem 'dotenv-rails'
+group :production do
+  gem 'mysql2'
+end
+
+gem 'font-awesome-sass', '~> 5.4.1'
+

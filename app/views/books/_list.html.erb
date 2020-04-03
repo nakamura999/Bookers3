@@ -1,6 +1,7 @@
 <!-- 共通部分　プロフィールから投稿まで -->
           <div class="col-xs-3">
             <!-- プロフィール -->
+            <!-- user: @user -->
              <h2>User info</h2>
              <%= attachment_image_tag user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg" %>
              <table class="table">
@@ -22,7 +23,8 @@
              </div>
 
 
-             <!-- 投票欄↓ -->
+             <!-- 新規投票欄↓ -->
+             <!-- book: @book  @book= Book.new -->
              <h2>New book</h2>
                <%= form_for(book) do |book| %>
                  <div class="field row">

@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
+  # ↑ログインしているユーザーがuserにアクセスできる
 
   # ローカル変数→使用できる範囲が限られている。メソッドやブロック内で定義した場合、そのメソットやブロック内で使用可能となる。
   # インスタンス変数（@)→同じオブジェクト内（同クラス内）で共有可能な変数
@@ -42,8 +43,13 @@ class UsersController < ApplicationController
   private
   def user_params
     params.require(:user).permit(:name, :introduction, :profile_image)
-    # カラムを追加
   end
+    # カラムを追加
+    # コントローラー作成(アクション付き) g controller モデル名s アクション名(複数あり）
+    # モデルにカラム追加　ターミナル { g migrate Addカラム(先頭大文字)名Toモデル名(テーブル名)s カラム名:データ型 }  → 後 rails db:migrate
+    # /db/migrate/schema.rbにカラム項目
+    # redirect_to アクション内の定義も持っていく
+    # render そのままviewへいく
 
 
 end

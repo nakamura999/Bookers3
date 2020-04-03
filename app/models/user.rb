@@ -14,6 +14,8 @@ class User < ApplicationRecord
   # プロフィール文50文字いない
   attachment :profile_image
   has_many :books, dependent: :destroy
+  has_many :favorites, dependent: :destroy
+  has_many :book_comments,dependent: :destroy
   # Userモデルに対して、Bookモデルが1:Nになるよう関連
 
 end
