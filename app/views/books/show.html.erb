@@ -92,7 +92,7 @@
             <!-- コメント -->
           </td>
           <td>
-            <%= link_to "Destroy",book_book_comments_path(@book_detail.id, book_comment.id), class: "btn-sm btn-danger", method: :delete %>
+            <%= link_to "Destroy",book_book_comments_path(book_comment.id), class: "btn-sm btn-danger", method: :delete %>
           </td>
         </tr>
        </tbody>
@@ -101,14 +101,12 @@
       <!-- コメント一覧ここまで -->
 
       <!-- <form class="mt-20"> -->
-      <%= form_for [@book_detail, @book_comment] do |f| %>
-        <div class="row">
-          <div class="col-sm-12">
-              <%= f.text_area :comment, rows:'4', class: "form-control",placeholder: "コメントをここに" %>
-          </div>
-        </div>
-        <%= f.submit "送信", class: "sm-s" %>
-      <% end %>
+      <div class="comment-form">
+        <%= form_for [@book_detail, @book_comment] do |f| %>
+            <%= f.text_area :comment, size: "90×5" %>
+            <%= f.submit "送信" %>
+        <% end %>
+      </div>
       <!-- </form> -->
     </div>
   </div>

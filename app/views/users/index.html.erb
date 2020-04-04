@@ -13,7 +13,9 @@
           <tr>
             <th>image</th>
             <th>name</th>
-            <th colspan="3"></th>
+            <th></th>
+            <th></th>
+            <th colspan="5"></th>
           </tr>
         </thead>
 
@@ -27,6 +29,23 @@
             </td>
             <td>
               <%= users.name %>
+            </td>
+            <td>
+              フォロー数 : <%= users.follower.count %>
+            </td>
+            <td>
+              フォロワー数 : <%= users.followed.count %>
+            </td>
+            <td>
+            <!-- フォローボタン -->
+            <% unless users == current_user %>
+                  <% if current_user.following?(users) %>
+                   <%= link_to "フォロー外す", unfollow_path(users.id), method: :delete %>
+                    <% else %>
+                   <%= link_to "フォローする", follow_path(users.id), method: :post %>
+                  <% end %>
+            <% end %>
+            <!-- フォローボタンここまで -->
             </td>
             <td>
               <%= link_to "Show",user_path(users.id) %>
