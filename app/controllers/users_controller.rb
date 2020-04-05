@@ -17,6 +17,7 @@ class UsersController < ApplicationController
     @book =Book.new
     @books = Book.all
     @user = current_user
+    # @users = User.paginate(page: params[:page],per_page: 5).search(params[:search])
   end
 
   def edit

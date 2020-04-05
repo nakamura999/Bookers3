@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   # フォローする
   delete 'unfollow/:id' => 'relationships#destroy', as: "unfollow"
   # フォローを外す
+  get '/search' => 'search#search'
   resources :books, only: [:show, :index, :edit, :create, :update, :destroy] do
   resource :favorites, only: [:create, :destroy]
   resource :book_comments, only: [:create, :destroy]
