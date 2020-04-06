@@ -41,21 +41,11 @@
             </td>
 
             <!-- いいね機能 -->
-            <% if @book_detail.favorited_by?(current_user) %>
-              <td>
-               <%= link_to book_favorites_path(@book_detail), method: :delete do %>
-                <i class="fas fa-heart" aria-hidden="true" style="color: red;"></i>
-                <%= @book_detail.favorites.count %>
-               <% end %>
-              </td>
-            <% else %>
-              <td>
-                <%= link_to book_favorites_path(@book_detail), method: :post do %>
-                 <i class="far fa-heart" aria-hidden="true"></i>
-                 <%= @book_detail.favorites.count %>
-                <% end %>
-              </td>
-            <% end %>
+
+            <td id="favorites_buttons_<%= @book_detail.id %>">
+            <%= render partial: 'favorites/favorites', locals: { book_detail: @book_detail} %>
+            </td>
+
             <!-- いいね機能ここまで -->
             <!-- コメント件数 -->
             <td class="comment-count">コメント数 :<%= @book_detail.book_comments.count %>
@@ -77,35 +67,18 @@
       </table>
 
       <!-- コメント一覧 -->
-      <% @book_detail.book_comments.each do |book_comment| %>
-      <table>
-       <tbody>
-        <tr>
-          <td>
-            <!-- プロフィール画像 -->
-            <%= attachment_image_tag book_comment.user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg" %>
-            <br>
-            <%= book_comment.user.name %>
-          </td>
-          <td>
-            <%= book_comment.comment %>
-            <!-- コメント -->
-          </td>
-          <td>
-            <%= link_to "Destroy",book_book_comments_path(book_comment.id), class: "btn-sm btn-danger", method: :delete %>
-          </td>
-        </tr>
-       </tbody>
-      </table>
-      <% end %>
+
+      <div id="comments_area">
+        <%= render partial: 'book_comments/comment', locals: {book: @book_detail.book_comments} %>
+      </div>
+
       <!-- コメント一覧ここまで -->
 
       <!-- <form class="mt-20"> -->
       <div class="comment-form">
-        <%= form_for [@book_detail, @book_comment] do |f| %>
-            <%= f.text_area :comment, size: "90×5" %>
-            <%= f.submit "送信" %>
-        <% end %>
+
+      <%= render partial: 'book_comments/comment_form', locals: { book_detail: @book_detail, book_comment: @book_comment} %>
+
       </div>
       <!-- </form> -->
     </div>

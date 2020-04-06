@@ -47,21 +47,11 @@
                 <%= book.body %>
             </td>
             <!-- いいね -->
-            <% if book.favorited_by?(current_user) %>
-              <td>
-               <%= link_to book_favorites_path(book), method: :delete do %>
-                <i class="fas fa-heart" aria-hidden="true" style="color: red;"></i>
-                <%= book.favorites.count %>
-               <% end %>
-              </td>
-            <% else %>
-              <td>
-                <%= link_to book_favorites_path(book), method: :post do %>
-                 <i class="far fa-heart" aria-hidden="true"></i>
-                 <%= book.favorites.count %>
-                <% end %>
-              </td>
-            <% end %>
+
+            <td id="favorites_buttons_<%= book.id %>">
+            <%= render partial: 'favorites/favorites', locals: { book_detail: book} %>
+            </td>
+
             <!-- kokomade -->
               <td class="comment-count">コメント数 :<%= book.book_comments.count %>
               </td>

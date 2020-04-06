@@ -1,9 +1,9 @@
 class FavoritesController < ApplicationController
 	def create
-		book = Book.find(params[:book_id])
-		favorite = current_user.favorites.new(book_id: book.id)
+		@book_detail = Book.find(params[:book_id])
+		favorite = current_user.favorites.new(book_id: @book_detail.id)
 		favorite.save
-        redirect_back(fallback_location: root_path)
+        # redirect_back(fallback_location: root_path)
         # 直前のページへリダイレクトする
 	end
 
@@ -16,10 +16,10 @@ class FavoritesController < ApplicationController
  #  　end
 
 	def destroy
-		book = Book.find(params[:book_id])
-		favorite = current_user.favorites.find_by(book_id: book.id)
+		@book_detail = Book.find(params[:book_id])
+		favorite = current_user.favorites.find_by(book_id: @book_detail.id)
 		favorite.destroy
-        redirect_back(fallback_location: root_path)
+        # redirect_back(fallback_location: root_path)
 	end
 
     # def destroy
@@ -66,4 +66,38 @@ class FavoritesController < ApplicationController
     #      <% end %>
     #   <% end %>
     # </td>
+
+            #     <!-- いいね機能 -->
+            # <% if @book_detail.favorited_by?(current_user) %>
+            #   <td>
+            #    <%= link_to book_favorites_path(@book_detail), method: :delete do %>
+            #     <i class="fas fa-heart" aria-hidden="true" style="color: red;"></i>
+            #     <%= @book_detail.favorites.count %>
+            #    <% end %>
+            #   </td>
+            # <% else %>
+            #   <td>
+            #     <%= link_to book_favorites_path(@book_detail), method: :post do %>
+            #      <i class="far fa-heart" aria-hidden="true"></i>
+            #      <%= @book_detail.favorites.count %>
+            #     <% end %>
+            #   </td>
+            # <% end %>
+
+            # <!-- いいね機能ここまで -->
+            # <% if book.favorited_by?(current_user) %>
+            #   <td>
+            #    <%= link_to book_favorites_path(book), method: :delete do %>
+            #     <i class="fas fa-heart" aria-hidden="true" style="color: red;"></i>
+            #     <%= book.favorites.count %>
+            #    <% end %>
+            #   </td>
+            # <% else %>
+            #   <td>
+            #     <%= link_to book_favorites_path(book), method: :post do %>
+            #      <i class="far fa-heart" aria-hidden="true"></i>
+            #      <%= book.favorites.count %>
+            #     <% end %>
+            #   </td>
+            # <% end %>
 end

@@ -17,7 +17,6 @@ class UsersController < ApplicationController
     @book =Book.new
     @books = Book.all
     @user = current_user
-    # @users = User.paginate(page: params[:page],per_page: 5).search(params[:search])
   end
 
   def edit
@@ -61,6 +60,8 @@ class UsersController < ApplicationController
     # /db/migrate/schema.rbにカラム項目
     # redirect_to アクション内の定義も持っていく
     # render そのままviewへいく
+    # find 主キーに対応するレコードを取り出す
+    # find_by 与えられた条件にマッチするレコードのうち、最初のレコードだけ返す
 
 
 end
