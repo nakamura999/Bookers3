@@ -8,6 +8,9 @@ class User < ApplicationRecord
   # :recoverable（パスワードをリセット）
   # :rememberable（ログイン情報を保存）
   # :validatable（emailのフォーマットなどのバリデーション）
+
+  after_create :send_welcome_mail
+
   validates :name, presence: true, length: 2..20
   # user名前２から20文字いない
   validates :introduction, length: {maximum: 50}
@@ -49,9 +52,12 @@ class User < ApplicationRecord
   end
   # フォローしていればtrueを返す
 
+
+  # 下記によって、prefectureメソッドが生成され、 都道府県コード、都道府県名が参照できるようになります。
   include JpPrefecture
   jp_prefecture :prefecture_code
 
+  # postal_codeからprefecture_nameに変換するメソッドを用意します．
   def prefecture_name
     JpPrefecture::Prefecture.find(code: prefecture_code).try(:name)
   end
@@ -59,16 +65,5 @@ class User < ApplicationRecord
   def prefecture_name=(prefecture_name)
     self.prefecture_code = JpPrefecture::Prefecture.find(name: prefecture_name).code
   end
-  # 　include JpPrefecture
-# 　jp_prefecture :prefecture_code
-#   # prefecture_codeはuserが持っているカラム
-
-#   # postal_codeからprefecture_nameに変換するメソッドを用意します．
-#   def prefecture_name
-#     JpPrefecture::Prefecture.find(code: prefecture_code).try(:name)
-#   end
-
-#   def prefecture_name=(prefecture_name)
-#     self.prefecture_code = JpPrefecture::Prefecture.find(name: prefecture_name).code
-#   end
 end
+

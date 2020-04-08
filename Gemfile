@@ -85,4 +85,5 @@ end
 
 gem 'font-awesome-sass', '~> 5.4.1'
 
+# 住所の情報を元に緯度、経度を割り出す
 gem "geocoder"

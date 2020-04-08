@@ -23,6 +23,7 @@
   <div class="field">
     <%= f.label :prefecture_code %><br />
     <%= f.collection_select :prefecture_code, JpPrefecture::Prefecture.all, :name, :name, class: "address" %>
+    <!-- <%= f.collection_select プロパティ名, オブジェクトの配列, value属性の項目, テキストの項目 [, オプション] %> -->
   </div>
 
   <div class="field">

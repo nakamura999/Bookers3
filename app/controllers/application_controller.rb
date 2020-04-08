@@ -22,5 +22,6 @@ class ApplicationController < ActionController::Base
     # config.authentication_keys = [:name]→config/initializers/devise.rb書きあえ
     devise_parameter_sanitizer.permit(:account_update, keys: [:name])
     # config/intializers/device.rb書き換え
+    # ログイン時はnameを使用
   end
 end
