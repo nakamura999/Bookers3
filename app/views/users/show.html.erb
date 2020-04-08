@@ -36,6 +36,13 @@
          <% end %>
         </tbody>
        </table>
+       <!-- 地図 -->
+
+      <% if current_user.id == @user.id %>
+        <%= render 'users/map', user: @user %>
+      <% end %>
+
+       <!-- 地図ここまで -->
     </div>
   </div>
 </div>

@@ -12,12 +12,13 @@
 //
 //= require jquery
 //= require rails-ujs
+//= require jquery.jpostal
 //= require activestorage
 //= require turbolinks
 //= require bootstrap-sprockets
 //= require_tree .
 
-
+document.addEventListener("turbolinks:load", function() {
 
 $(document).ready(function () {
   $("#theTarget").skippr({
@@ -43,3 +44,5 @@ $(document).ready(function () {
       hidePrevious : false
   });
 });
+
+})

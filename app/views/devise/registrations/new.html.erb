@@ -16,6 +16,26 @@
   </div>
 
   <div class="field">
+    <%= f.label :postcode %><br />
+    <%= f.text_field :postcode, autofocus: true, autocomplete: "postcode", class: "postcode", id: "address_zipcode" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :prefecture_code %><br />
+    <%= f.collection_select :prefecture_code, JpPrefecture::Prefecture.all, :name, :name, class: "address" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :City %><br />
+    <%= f.text_field :address_city, autofocus: true, autocomplete: 'address_city', class: "address", id:"address_city" %>
+  </div>
+  <div class="field">
+    <%= f.label :Street %><br />
+    <%= f.text_field :address_street, autofocus: true, autocomplete: 'address_street', class: "address", id: "address_street" %>
+    <!-- placeholder: 'address_street'にするとフィールドにaddress_streetが出る -->
+  </div>
+
+  <div class="field">
     <%= f.label :password %>
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
