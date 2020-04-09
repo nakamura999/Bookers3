@@ -1,8 +1,11 @@
 <div class="container">
   <div class="row">
 
-    <%= render 'books/list', book: @book, user: @user %>
+    <div class="col-xs-3">
+    <%= render 'books/list', user: @user %>
+    <%= render 'books/list2', book: @book %>
     <!-- 共通部分テンプレート -->
+    </div>
 
     <p class="successfully"><%= flash[:notice] %></p>
     <p class="successfully"><%= flash[:notice2] %></p>

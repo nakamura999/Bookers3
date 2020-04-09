@@ -1,0 +1,30 @@
+<div class="container">
+
+  <section class="chattop">
+    <h2 class="chatname">C H A T R O O M</h2>
+    <% @entries.each do |e| %>
+      <h4 class="chatname"><%= e.user.name%>さん</h4>
+    <% end %>
+  </section>
+
+  <div class="chatbox">
+
+    <% if @chats.present? %>
+      <% @chats.each do |m| %>
+        <div class="content">
+          <strong><%= m.content %></strong>
+          <p>by <%= m.user.name %>さん</p>
+        </div>
+      <% end %>
+    <% else %>
+      <h3 class="text-center">メッセージはまだありません</h3>
+    <% end %>
+
+    <div class="content">
+      <div id="chat_area">
+        <%= render partial: 'rooms/room', locals: {chat: @chat} %>
+      </div>
+    </div>
+
+  </div>
+</div>

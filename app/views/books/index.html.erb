@@ -16,8 +16,11 @@
 
   <div class="row">
 
-  <%= render 'books/list', book: @book, user: @user %>
-  <!-- 共通部分テンプレート -->
+    <div class="col-xs-3">
+    <%= render 'books/list', user: @user %>
+    <%= render 'books/list2', book: @book %>
+    <!-- 共通部分テンプレート -->
+    </div>
 
     <div class="col-xs-9">
       <h2>Books</h2>

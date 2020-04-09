@@ -1,5 +1,3 @@
-<!-- 共通部分　プロフィールから投稿まで -->
-          <div class="col-xs-3">
             <!-- プロフィール -->
             <!-- user: @user -->
              <h2>User info</h2>
@@ -49,24 +47,3 @@
                <% end %>
                <!-- フォローボタンここまで -->
              </div>
-
-
-             <!-- 新規投票欄↓ -->
-             <!-- book: @book  @book= Book.new -->
-             <h2>New book</h2>
-               <%= form_for(book) do |book| %>
-                 <div class="field row">
-                   <label for="book_title">Title</label>
-                   <%= book.text_field :title, class: "col-xs-12" %>
-                 </div>
-
-                 <div class="field row">
-                   <label for="book_opinion">Opinion</label>
-                   <%= book.text_area :body, class: "col-xs-12" %>
-                 </div>
-
-                 <div class="actions row">
-                   <%= book.submit "Create Book", class: "btn btn-primary col-xs-12" %>
-                 </div>
-               <% end %>
-          </div>

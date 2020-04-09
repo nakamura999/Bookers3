@@ -9,20 +9,21 @@ class User < ApplicationRecord
   # :rememberable（ログイン情報を保存）
   # :validatable（emailのフォーマットなどのバリデーション）
 
-  after_create :send_welcome_mail
-
   validates :name, presence: true, length: 2..20
   # user名前２から20文字いない
   validates :introduction, length: {maximum: 50}
   # プロフィール文50文字いない
   attachment :profile_image
+
+  # Userモデルに対して、1:Nになるよう関連
+  # class_name  一つのモデルに対して、二つのアソシエーション経路を組む場合に多用する
   has_many :books, dependent: :destroy
-  # Userモデルに対して、Bookモデルが1:Nになるよう関連
   has_many :favorites, dependent: :destroy
   has_many :book_comments,dependent: :destroy
   has_many :follower, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
   has_many :followed, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
-  # class_name  一つのモデルに対して、二つのアソシエーション経路を組む場合に多用する
+  has_many :chats, dependent: :destroy
+  has_many :user_rooms, dependent: :destroy
 
   # validationする前にaddress_1を行う
   before_validation :address_1

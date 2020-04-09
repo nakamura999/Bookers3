@@ -10,6 +10,25 @@ class UsersController < ApplicationController
     @books = @user.books
     @book = Book.new
     @books = Book.all
+    # 下記チャット機能
+    @currentUserEntry= UserRoom.where(user_id: current_user.id)
+    @userEntry= UserRoom.where(user_id: @user.id)
+    if @user.id == current_user.id
+    else
+      @currentUserEntry.each do |cu|
+        @userEntry.each do |u|
+          if cu.room_id == u.room_id then
+            @isroom = true
+            @roomid = cu.room_id
+          end
+        end
+      end
+      if @isRoom
+      else
+        @room = Room.new
+        @entry = UserRoom.new
+      end
+    end
   end
 
   def index

@@ -4,8 +4,27 @@
   <p><%= flash[:notice] %></p>
   <div class="row">
 
-    <%= render 'books/list', book: @book, user: @user %>
+    <div class="col-xs-3">
+    <%= render 'books/list', user: @user %>
+
+    <% unless @user == current_user %>
+      <div class="row">
+        <% if @isroom == true %>
+          <a href="/rooms/<%= @roomid %>" class="btn btn-warning col-xs-8">チャットへ</a>
+        <% else %>
+          <%= form_for @room do |f| %>
+            <%= fields_for @entry do |e| %>
+              <%= e.hidden_field :user_id, :value=> @user.id %>
+            <% end %>
+              <%= f.submit "チャットを始める", class: "btn btn-warning col-xs-8" %>
+          <% end %>
+       <% end %>
+      </div>
+    <% end %>
+
+    <%= render 'books/list2', book: @book %>
     <!-- 共通部分テンプレート -->
+    </div>
 
     <div class="col-xs-9">
       <h2>Books</h2>
